@@ -4,8 +4,16 @@
 name: Maven Package
 
 on:
-  release:
-    types: [created]
+  workflow_dispatch:
+    inputs:
+      releaseVersion:
+        description: 'Release Version'
+        required: true
+        default: ''
+      nextDevelopmentVersion:
+        description: 'Next Development Version ("-SNAPSHOT" muss nicht angegeben werden.)'
+        required: true
+        default: ''
 
 jobs:
   build:
