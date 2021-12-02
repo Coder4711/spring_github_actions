@@ -35,7 +35,7 @@ jobs:
         settings-path: ${{ github.workspace }} # location for the settings.xml file
     
     - name: Build with Maven
-      run: mvn -B clean --file pom.xml
+      run: mvn -B package --file pom.xml
 
     - name: Confirm that ~/.m2/repository directory has been made
       run: |
