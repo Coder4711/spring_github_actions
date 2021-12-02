@@ -30,11 +30,27 @@ jobs:
       with:
         java-version: '11'
         distribution: 'adopt'
+        cache: maven
         server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
         settings-path: ${{ github.workspace }} # location for the settings.xml file
+    
+    - name: Confirm that ~/.m2/repository directory has been made
+      run: |
+        if [ ! -d ~/.m2/repository ]; then
+          echo "::error::The ~/.m2/repository directory does not exist unexpectedly"
+          exit 1
+        fi
+        ls ~/.m2/repository
 
     - name: Build with Maven
       run: mvn -B package --file pom.xml
+
+    - name: Create files to cache
+      run: |
+        if [ ! -d ~/.m2/repository ]; then
+          echo "::error::The ~/.m2/repository directory does not exist unexpectedly"
+          exit 1
+        fi
 
     - name: Publish to GitHub Packages Apache Maven
       run: mvn deploy -s $GITHUB_WORKSPACE/settings.xml
