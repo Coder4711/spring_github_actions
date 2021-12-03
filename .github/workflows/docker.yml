@@ -73,7 +73,7 @@ jobs:
           context: ./
           # Note: tags has to be all lower-case
           tags: |
-            ghcr.io/Coder4711/spring_github_actions/simple:latest
+            ghcr.io/coder4711/spring_github_actions/rest01:latest
           # build on feature branches, push only on main branch
           push: ${{ github.ref == 'refs/heads/main' }}
 
