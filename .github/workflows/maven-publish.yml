@@ -55,6 +55,10 @@ jobs:
             -DskipTests=true \ 
             --settings .github/settings.xml
 
+        env:
+          MAIN_GITHUB_RELEASE_USERNAME: ${{ github.actor }}
+          MAIN_GITHUB_RELEASE_TOKEN: ${{ github.token }}
+
         # git pull
 
     #- name: Publish to GitHub Packages Apache Maven

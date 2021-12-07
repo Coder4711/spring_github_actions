@@ -13,7 +13,7 @@
                 <repository>
                     <id>github</id>
                     <name>GitHub</name>
-                    <url>https://maven.pkg.github.com/minova-afis/aero.minova.maven.root</url>
+                    <url>https://maven.pkg.github.com/coder4711</url>
                 </repository>
             </repositories>
         </profile>
