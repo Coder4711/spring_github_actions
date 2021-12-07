@@ -25,8 +25,8 @@
 	</properties>
 	
 	<scm>
-		<connection>scm:git@github.com:Coder4711/spring_github_actions.git</connection>
-		<developerConnection>scm:git@github.com:Coder4711/spring_github_actions.git</developerConnection>
+		<connection>scm:git:https://github.com/Coder4711/spring_github_actions.git</connection>
+		<developerConnection>scm:git:https://github.com/Coder4711/spring_github_actions.git</developerConnection>
 		<tag>HEAD</tag>
 	</scm>
 	
