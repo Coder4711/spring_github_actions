@@ -4,6 +4,7 @@
 
 
 docker build -t coder4711/rest01:v1 .
+
 docker run -p 8080:8080 coder4711/rest01:v1
 
 

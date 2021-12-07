@@ -1,23 +1,30 @@
 package de.whohm.spring.rest01;
 
+import javax.validation.constraints.Min;
+
+import org.springframework.lang.NonNull;
 
 public class Airport {
-	private int id;
+	
+	@NonNull
+	private Integer id;
+	
+	@Min(10)
 	private String name;
 
 	public Airport() {
 	}
 
-	public Airport(int id, String name) {
+	public Airport(Integer id, String name) {
 		this.id = id;
 		this.name = name;
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

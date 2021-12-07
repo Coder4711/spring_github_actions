@@ -2,8 +2,11 @@ package de.whohm.spring.rest01;
 
 import java.time.LocalDateTime;
 
+import javax.validation.Valid;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -13,9 +16,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 @RestController
 @RequestMapping("airport")
-public class DemoController {
+public class AirportController {
 
-	Logger logger = LoggerFactory.getLogger(DemoController.class);
+	Logger logger = LoggerFactory.getLogger(AirportController.class);
 	
 	@RequestMapping(path = "/alive", method = RequestMethod.GET)
 	public String alive() {
@@ -32,6 +35,12 @@ public class DemoController {
 			logger.error("Error while processing json: ", e);
 			throw new RuntimeException(e);
 		}
+		
+		return airport.toString();
+	}
+
+	@RequestMapping(path = "/validate", method = RequestMethod.POST)
+	public String validate(@Valid @RequestBody Airport airport) {
 		
 		return airport.toString();
 	}
