@@ -49,6 +49,8 @@ jobs:
           git config --global user.name "action"
           cd $GITHUB_WORKSPACE/
           mvn --batch-mode release:prepare release:perform \
+            -Dusername=$GITHUB_ACCESS_TOKEN \
+            -Dpassword=$GITHUB_ACCESS_TOKEN \
             -DreleaseVersion=${{ github.event.inputs.releaseVersion }} \
             -DdevelopmentVersion=${{ github.event.inputs.nextDevelopmentVersion }}-SNAPSHOT \
             -Darguments="-Dmaven.javadoc.skip=true" \
