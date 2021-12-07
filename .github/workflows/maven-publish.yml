@@ -58,8 +58,8 @@ jobs:
             --settings .github/settings.xml
 
         env:
-          MAIN_GITHUB_RELEASE_USERNAME: ${{ github.actor }}
-          MAIN_GITHUB_RELEASE_TOKEN: ${{ github.token }}
+          MVN_RELEASE_USERNAME: ${{ secrets.MVN_RELEASE_USERNAME }}
+          MVN_RELEASE_TOKEN: ${{ secrets.MVN_RELEASE_TOKEN }}
 
         # git pull
 
