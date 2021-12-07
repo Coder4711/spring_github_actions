@@ -40,13 +40,16 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-maven-
       
+      - name: Maven config
+        run: |
+          git config --global user.email "action@hohm.local"
+          git config --global user.name "action"
+
       - name: Build with Maven
         run: mvn -B package --file pom.xml
  
       - name: Build
         run: |
-          git config --global user.email "action@hohm.local"
-          git config --global user.name "action"
           cd $GITHUB_WORKSPACE/
           mvn --batch-mode release:prepare release:perform \
             -Dusername=$GITHUB_ACCESS_TOKEN \

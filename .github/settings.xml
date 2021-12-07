@@ -13,7 +13,7 @@
                 <repository>
                     <id>github</id>
                     <name>GitHub</name>
-                    <url>https://maven.pkg.github.com/coder4711</url>
+                    <url>https://maven.pkg.github.com/coder4711/spring_github_actions</url>
                 </repository>
             </repositories>
         </profile>
