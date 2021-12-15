@@ -1,4 +1,4 @@
-name: "Maven build - Docker"
+name: "Build - Test - Docker"
 
 on:
   workflow_dispatch:
@@ -6,14 +6,15 @@ on:
       releaseVersion:
         description: 'Release Version'
         required: true
-        default: ''
+        default: '1.0.0'
       nextDevelopmentVersion:
         description: 'Next Development Version ("-SNAPSHOT" muss nicht angegeben werden.)'
         required: true
-        default: ''
+        default: '1.0.1'
 
 jobs:
   build:
+    name: Build with Maven
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -46,7 +47,7 @@ jobs:
         run: mvn -B package --file pom.xml
 
   analyze:
-    name: Analyze
+    name: Analyze Sourcecode
     runs-on: ubuntu-latest
     needs: [build]
     permissions:
@@ -94,11 +95,22 @@ jobs:
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v1
 
-  build_docker:
-    name: Build Docker image and push to repositories
+  test:
+    name: Test Sourcecode
     # run only when code is compiling and tests are passing
     runs-on: ubuntu-latest
     needs: [analyze]
+
+    # steps to perform in job
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+  build_docker:
+    name: Build Docker Image
+    # run only when code is compiling and tests are passing
+    runs-on: ubuntu-latest
+    needs: ['analyze','test']
 
     # steps to perform in job
     steps:
