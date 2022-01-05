@@ -52,8 +52,8 @@ jobs:
         run: |
           cd $GITHUB_WORKSPACE/
           mvn --batch-mode release:prepare release:perform \
-            -Dusername=$GITHUB_ACCESS_TOKEN \
-            -Dpassword=$GITHUB_ACCESS_TOKEN \
+            -Dusername=$MVN_RELEASE_USERNAME \
+            -Dpassword=$MVN_RELEASE_TOKEN \
             -DreleaseVersion=${{ github.event.inputs.releaseVersion }} \
             -DdevelopmentVersion=${{ github.event.inputs.nextDevelopmentVersion }}-SNAPSHOT \
             -Darguments="-Dmaven.javadoc.skip=true" \
