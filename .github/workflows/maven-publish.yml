@@ -51,7 +51,7 @@ jobs:
       - name: Build
         run: |
           cd $GITHUB_WORKSPACE/
-          mvn --batch-mode clean prepare release:prepare release:perform -P github \
+          mvn --batch-mode clean package release:prepare release:perform -P github \
             -Dusername=$MVN_RELEASE_TOKEN \
             -Dpassword=$MVN_RELEASE_TOKEN \
             -DreleaseVersion=${{ github.event.inputs.releaseVersion }} \
