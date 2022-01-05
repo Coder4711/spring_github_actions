@@ -16,6 +16,7 @@
                     <url>https://maven.pkg.github.com/Coder4711/spring_github_actions</url>
                 </repository>
             </repositories>
+              </profile>
     </profiles>
 
     <servers>
