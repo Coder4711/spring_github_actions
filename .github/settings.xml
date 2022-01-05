@@ -8,7 +8,7 @@
 
     <profiles>
         <profile>
-            <id>github</id>
+            <id>repo-github</id>
             <repositories>
                 <repository>
                     <id>github</id>
