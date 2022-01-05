@@ -48,22 +48,20 @@ jobs:
       - name: Build with Maven
         run: mvn -B package --file pom.xml
  
-      #- name: Build
-      #  run: |
-      #    cd $GITHUB_WORKSPACE
-      #    mvn --batch-mode release:prepare release:perform -P repo-github \
-      #      -Dusername=$MVN_RELEASE_TOKEN \
-      #      -Dpassword=$MVN_RELEASE_TOKEN \
-      #      -DreleaseVersion=${{ github.event.inputs.releaseVersion }} \
-      #      -DdevelopmentVersion=${{ github.event.inputs.nextDevelopmentVersion }}-SNAPSHOT \
-      #      -Darguments="-Dmaven.javadoc.skip=true" \
-      #      -DskipTests=true \ 
-      #      --settings .github/settings.xml
-      #  env:
-      #    MVN_RELEASE_USERNAME: ${{ secrets.MVN_RELEASE_USERNAME }}
-      #    MVN_RELEASE_TOKEN: ${{ secrets.MVN_RELEASE_TOKEN }}
+      - name: Build
+        run: |
+          mvn --batch-mode release:prepare release:perform -P repo-github \
+            -Dusername=$MVN_RELEASE_TOKEN \
+            -Dpassword=$MVN_RELEASE_TOKEN \
+            -DreleaseVersion=${{ github.event.inputs.releaseVersion }} \
+            -DdevelopmentVersion=${{ github.event.inputs.nextDevelopmentVersion }}-SNAPSHOT \
+            -Darguments="-Dmaven.javadoc.skip=true" \
+            -DskipTests=true \ 
+            --settings .github/settings.xml
+        env:
+          MVN_RELEASE_USERNAME: ${{ secrets.MVN_RELEASE_USERNAME }}
+          MVN_RELEASE_TOKEN: ${{ secrets.MVN_RELEASE_TOKEN }}
 
-        # git pull
 
     #- name: Publish to GitHub Packages Apache Maven
     #  run: mvn deploy -s $GITHUB_WORKSPACE/settings.xml
